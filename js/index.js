@@ -12,7 +12,7 @@ window.onload=function(){
 	$(window).scroll(function(){
 		var top=$(window).scrollTop();
 		var flag;
-		if(top!=0){
+		if(top>=0){
 			flag=1;
 		}
 		else {
