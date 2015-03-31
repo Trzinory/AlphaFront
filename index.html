@@ -13,19 +13,37 @@
 </head>
 <body>
 	<div id="nav_top">
-		<div id="title_top">Alpha</div>
+		<div id="user">
+			<div id="tran"></div>
+			<div id="user_face"><img src=""></div>
+			<div id="list_top">
+				<ul>
+					<li>
+						<img src="./img/settings.png">
+						<p>写文章</p>
+					</li>
+					<li>
+						<img src="./img/pen.png">
+						<p>设置</p>
+					</li>
+					<li>
+						<img src="./img/paperplane.png">
+						<p>注销</p>
+						<div class="clear"></div>
+					</li>
+				</ul>
+			</div>
+		</div>
 		<div id="lr">
 			<div id="log">登录</div>
 			<span>/</span>
 			<div id="reg">注册</div>
 		</div>
-		<div id="user">
-			<img src="">
-		</div>
 		<div>
 			<input id="search" placeholder="搜索">
 		</div>
-		<div id="intro_top" class="clear">一 一 挖 掘 新 生 的 互 联 网 产 品</div>
+		<div id="title_top">Alpha</div>
+		<div id="intro_top">一 一 挖 掘 新 生 的 互 联 网 产 品</div>
 		<div class="clear"></div>
 	</div>
 	<div id="main">
@@ -123,28 +141,47 @@
 		<div id="popup_bottom"></div>
 		<div id="popup_top">
 			<div id="lr_box">
+				<div id="close">×</div>
 				<div id="lr_title">
 					<div id="login">登录</div>
 					<div id="regis">注册</div>
+					<p id="move_stick"></p>
 					<p class="clear"></p>
 				</div>
 				<div id="log_box">
 					<div id="email" class="account">
-						<img src="">
+						<img src="./img/mail.png">
 						<input type="text" placeholder="邮箱">
 					</div>
 					<div id="password" class="account">
-						<img src="">
+						<img src="./img/lock.png">
 						<input type="text" placeholder="密码">
 					</div>
-					<div id="code_check">
-						<input type="text" placeholder="验证码">
-						<img src="">
-						<p id="hint">看不清楚？换一张</p>
-					</div>
-					<div id="log_button">登录</div>
 				</div>
-				<div id="reg_box"></div>
+				<div id="reg_box">
+					<div class="account">
+						<img src="./img/mail.png">
+						<input type="text" placeholder="账户">
+					</div>
+					<div class="account">
+						<img src="./img/t-shirt.png">
+						<input type="text" placeholder="昵称">
+					</div>
+					<div class="account">
+						<img src="./img/lock.png">
+						<input type="text" placeholder="密码">
+					</div>
+				</div>
+				<div id="code_check">
+					<input type="text" placeholder="验证码">
+					<img src="">
+					<p id="hint">看不清楚？换一张</p>
+				</div>
+				<div id="log_button">登录</div>
+				<div id="reg_button">注册</div>
+			</div>
+			<div id="origin_pic">
+				<img src="">
 			</div>
 		</div>
 	</div>

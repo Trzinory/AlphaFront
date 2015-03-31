@@ -18,19 +18,23 @@ window.onload=function(){
 		else {
 			flag=0;
 		}
+		//从顶滑下
 		if(flag==1&&scrollFlag!=flag){
 			$("#intro_top").css("display","none");
 			$("#nav_top").css("background-color","rgba(102,153,255,0.8)");
-			$("#search").css("margin-top","-5px");
+			$("#search").css("margin-top","15px");
 			$("#lr").css("margin-top","17px");
+			$("#user").css("margin-top","0px");
 			$("#content").css("margin-top","26px");
 			scrollFlag=1;
 		}
+		//从下滑到顶
 		else if(flag==0&&scrollFlag!=flag){
 			$("#intro_top").css("display","block");
 			$("#nav_top").css("background-color","rgba(102,153,255,1)");
-			$("#search").css("margin-top","6px");
+			$("#search").css("margin-top","25px");
 			$("#lr").css("margin-top","27px");
+			$("#user").css("margin-top","10px");
 			$("#content").css("margin-top","0px");
 			scrollFlag=0;
 		}
@@ -60,4 +64,43 @@ window.onload=function(){
 	}
 
 	//弹出框
+	$("#log").click(function(){
+		$("#popup,#lr_box,#log_box,#log_button").css("display","block");
+		$("#move_stick").css("left",0);
+		var h=parseInt($("#lr_box").css("height"));
+		$("#lr_box").css({top:"50%",marginTop:-h/2+"px"});
+	});
+	$("#reg").click(function(){
+		$("#popup,#lr_box,#reg_box,#reg_button").css("display","block");
+		$("#move_stick").css("left","88px");
+		var h=parseInt($("#lr_box").css("height"));
+		$("#lr_box").css({top:"50%",marginTop:-h/2+"px"});
+	});
+	$("#login").click(function(){
+		$("#log_box,#log_button").css("display","block");
+		$("#reg_box,#reg_button").css("display","none");
+		$("#move_stick").animate({left:0},200);
+	});
+	$("#regis").click(function(){
+		$("#reg_box,#reg_button").css("display","block");
+		$("#log_box,#log_button").css("display","none");
+		$("#move_stick").animate({left:"88px"},200);
+	});
+	$("#close,#popup_bottom").click(function(){
+		$("#popup,#lr_box,#log_box,#reg_box,#log_button,#reg_button,#origin_pic").css("display","none");
+	});
+	$(".pic_box img").click(function(){
+		$("#popup,#origin_pic").css("display","block");
+		$("#origin_pic img").attr(src);
+		var h=parseInt($("#origin_pic").css("height"));
+		$("#origin_pic").css({top:"50%",marginTop:-h/2+"px"});
+	});
+
+	//顶栏
+	$("#user").mouseover(function(){
+		$("#list_top").css("display","block");
+	});
+	$("#user").mouseout(function(){
+		$("#list_top").css("display","none");
+	});
 };
