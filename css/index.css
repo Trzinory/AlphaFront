@@ -27,13 +27,13 @@ ul
 	{
 	float:left;
 	color:white;
-	font-size:15px;
+	font-size:17px;
 	}
 #lr
 	{
 	margin:27px 0 0 25px;
 	float:right;
-	color:white;
+	color:#ffffff;
 	font-size:18px;
 	}
 #lr div
@@ -120,6 +120,10 @@ ul
 	}
 
 /*----------------------main----------------------*/
+#main
+	{
+	color:#444444;
+	}
 .fill
 	{
 	float:left;
@@ -128,7 +132,7 @@ ul
 #content
 	{
 	float:left;
-	width:650px;
+	width:780px;
 	}
 #content>div
 	{
@@ -145,9 +149,9 @@ ul
 .pic_box
 	{
 	float:right;
-	padding:10px 0 4px 0;
-	width:230px;
-	height:95px;
+	padding:8px 0 4px 0;
+	width:300px;
+	height:85px;
 	overflow-x:hidden;
 	white-space: nowrap;
 	}
@@ -156,16 +160,18 @@ ul
 	position:relative;
 	margin-left:6px;
 	width:65px;
-	height:85px;
+	height:75px;
 	cursor:pointer;
 	}
 .summary
 	{
 	padding:4px 0;
-	font-size:15px;
+	margin-bottom:14px;
+	font-size:13px;
 	}
 .date
 	{
+	font-size:14px;
 	padding:4px 0;
 	}
 .comments
@@ -175,10 +181,12 @@ ul
 	}
 .comments p
 	{
+	font-size:14px;
 	float:left;
 	}
 .comments p:first-child
 	{
+	font-size:16px;
 	color:#6699ff;
 	}
 .read
@@ -189,10 +197,12 @@ ul
 	}
 .read p
 	{
+	font-size:14px;
 	float:left;
 	}
 .read p:first-child
 	{
+	font-size:16px;
 	color:#6699ff;
 	}
 

@@ -1,10 +1,10 @@
 window.onload=function(){
 	var base=$(document).width();
-	$(".fill").css("width",(base-650)/2+"px");
+	$(".fill").css("width",(base-780)/2+"px");
 
 	$(window).resize(function(){
 		base=$(document).width();
-		$(".fill").css("width",(base-650)/2+"px");
+		$(".fill").css("width",(base-780)/2+"px");
 	});
 
 	var scrollFlag=0;
@@ -25,7 +25,7 @@ window.onload=function(){
 			$("#search").css("margin-top","15px");
 			$("#lr").css("margin-top","17px");
 			$("#user").css("margin-top","0px");
-			$("#content").css("margin-top","26px");
+			$("#content").css("margin-top","21px");
 			scrollFlag=1;
 		}
 		//从下滑到顶
