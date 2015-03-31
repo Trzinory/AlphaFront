@@ -25,7 +25,6 @@ window.onload=function(){
 			$("#search").css("margin-top","15px");
 			$("#lr").css("margin-top","17px");
 			$("#user").css("margin-top","0px");
-			$("#content").css("margin-top","21px");
 			scrollFlag=1;
 		}
 		//从下滑到顶
@@ -35,10 +34,8 @@ window.onload=function(){
 			$("#search").css("margin-top","25px");
 			$("#lr").css("margin-top","27px");
 			$("#user").css("margin-top","10px");
-			$("#content").css("margin-top","0px");
 			scrollFlag=0;
 		}
-		$("#nav_top").css("top",top+"px");
 	});
 
 	//图片滚动事件
@@ -49,7 +46,7 @@ window.onload=function(){
 		e.preventDefault();
 		var d=e.wheelDelta?e.wheelDelta:e.detail;
     	var len=$("img",this).length;
-    	var w=parseInt($("img",this).css("width"))+8;
+    	var w=parseInt($("img",this).css("width"))+9;
     	var n=0;
     	if(d>0)n=1;
     	else n=-1;
@@ -97,10 +94,4 @@ window.onload=function(){
 	});
 
 	//顶栏
-	$("#user").mouseover(function(){
-		$("#list_top").css("display","block");
-	});
-	$("#user").mouseout(function(){
-		$("#list_top").css("display","none");
-	});
 };

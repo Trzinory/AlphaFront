@@ -13,8 +13,10 @@ ul
 
 #nav_top
 	{
-	position:relative;
-	padding:10px 40px 20px 20px;
+	position:fixed;
+	width:100%;
+	padding:10px 0 20px 0;
+	text-indent:20px;
 	background-color:#6699ff;
 	z-index:1;
 	}
@@ -31,7 +33,7 @@ ul
 	}
 #lr
 	{
-	margin:27px 0 0 25px;
+	margin:27px 20px 0 5px;
 	float:right;
 	color:#ffffff;
 	font-size:18px;
@@ -55,6 +57,7 @@ ul
 	float:right;
 	width:80px;
 	margin-top:10px;
+	margin-right:40px;
 	margin-bottom:-10px;
 	}
 #user_face
@@ -63,6 +66,7 @@ ul
 	height:60px;
 	border-radius:60px;
 	background-color:white;
+	cursor:pointer;
 	}
 #tran
 	{
@@ -79,6 +83,10 @@ ul
 	right:5px;
 	width:160px;
 	}
+#user:hover #list_top
+	{
+	display:block;
+	}
 #list_top ul
 	{
 	padding:0px 20px 20px 25px;
@@ -89,6 +97,7 @@ ul
 #list_top li
 	{
 	margin-top:20px;
+	cursor:pointer;
 	}
 #list_top ul img
 	{
@@ -122,7 +131,12 @@ ul
 /*----------------------main----------------------*/
 #main
 	{
+	margin-top:103px;
 	color:#444444;
+	}
+#fill
+	{
+	height:1px;
 	}
 .fill
 	{
@@ -136,12 +150,12 @@ ul
 	}
 #content>div
 	{
-	padding:10px 0 10px 0;
+	padding:18px 0 10px 0;
 	border-bottom:dashed 2px #6699ff;
 	}
 .title
 	{
-	padding:4px 0;
+	margin-bottom:10px;
 	font-size:25px;
 	color:#6699ff;
 	cursor:pointer;
@@ -149,7 +163,7 @@ ul
 .pic_box
 	{
 	float:right;
-	padding:8px 0 4px 0;
+	margin-left:20px;
 	width:300px;
 	height:85px;
 	overflow-x:hidden;
@@ -158,31 +172,30 @@ ul
 .pic_box img
 	{
 	position:relative;
-	margin-left:6px;
+	margin-left:5px;
 	width:65px;
-	height:75px;
+	height:74px;
 	cursor:pointer;
 	}
 .summary
 	{
-	padding:4px 0;
 	margin-bottom:14px;
 	font-size:13px;
+	line-height:20px;
 	}
 .date
 	{
+	padding:2px 0 0 0;
 	font-size:14px;
-	padding:4px 0;
 	}
 .comments
 	{
-	padding:4px 0;
 	float:right;
 	}
 .comments p
 	{
+	display:inline;
 	font-size:14px;
-	float:left;
 	}
 .comments p:first-child
 	{
@@ -191,14 +204,13 @@ ul
 	}
 .read
 	{
-	padding:4px 15px;
-	margin-left:15px;
+	margin-left:50px;
 	float:right;
 	}
 .read p
 	{
+	display:inline;
 	font-size:14px;
-	float:left;
 	}
 .read p:first-child
 	{
@@ -362,6 +374,7 @@ ul
 	float:right;
 	margin-top:12px;
 	margin-right:10px;
+	color:#444444;
 	cursor:pointer;
 	}
 #log_button
