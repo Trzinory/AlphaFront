@@ -262,6 +262,7 @@ ul
 	width:500px;
 	background-color:white;
 	box-shadow:0 0 5px black;
+	overflow:hidden;
 	z-index:3;
 	}
 #lr_box>div
@@ -292,11 +293,12 @@ ul
 #log_box
 	{
 	display:none;
+	position:relative;
 	}
 #log_box>div
 	{
-	width:300px;
-	margin:0px auto 50px auto;
+	width:296px;
+	margin:0px auto 57px auto;
 	border-radius:8px;
 	}
 #log_box>div>input:focus
@@ -322,7 +324,7 @@ ul
 	}
 .account input
 	{
-	width:249px;
+	width:245px;
 	height:50px;
 	text-indent:15px;
 	border:none;
@@ -333,10 +335,11 @@ ul
 #reg_box
 	{
 	display:none;
+	position:relative;
 	}
 #reg_box>div
 	{
-	width:300px;
+	width:296px;
 	margin:0px auto 20px auto;
 	border-radius:8px;
 	}
@@ -389,6 +392,7 @@ ul
 #log_button
 	{
 	display:none;
+	position:relative;
 	width:300px;
 	font-size:24px;
 	padding:8px 0;
@@ -403,6 +407,7 @@ ul
 #reg_button
 	{
 	display:none;
+	position:relative;
 	width:300px;
 	font-size:24px;
 	padding:8px 0;

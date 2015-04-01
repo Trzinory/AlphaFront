@@ -1,12 +1,32 @@
 window.onload=function(){
-		//根据窗口大小调整页面布局
-		//拉动条影响的可视窗口变化
-		//编辑栏功能
-		var id=new Array();
-		var popup=document.getElementById("popup");
-		var left=document.getElementsByClassName("nav2_left");
-		var linkbox=document.getElementById("link_box");
-		var picbox=document.getElementById("pic_box");
+	//根据窗口大小调整页面布局
+	//拉动条影响的可视窗口变化
+	//顶栏
+	$("#list_top li:eq(0)").mouseover(function(){
+		$("#list_top img:eq(0)").attr({"src":"./img/settings2.png"});
+	});
+	$("#list_top li:eq(1)").mouseover(function(){
+		$("#list_top img:eq(1)").attr({"src":"./img/pen2.png"});
+	});
+	$("#list_top li:eq(2)").mouseover(function(){
+		$("#list_top img:eq(2)").attr({"src":"./img/paperplane2.png"});
+	});
+	$("#list_top li:eq(0)").mouseout(function(){
+		$("#list_top img:eq(0)").attr({"src":"./img/settings.png"});
+	});
+	$("#list_top li:eq(1)").mouseout(function(){
+		$("#list_top img:eq(1)").attr({"src":"./img/pen.png"});
+	});
+	$("#list_top li:eq(2)").mouseout(function(){
+		$("#list_top img:eq(2)").attr({"src":"./img/paperplane.png"});
+	});
+
+	//编辑栏功能
+	var id=new Array();
+	var popup=document.getElementById("popup");
+	var left=document.getElementsByClassName("nav2_left");
+	var linkbox=document.getElementById("link_box");
+	var picbox=document.getElementById("pic_box");
 
 		var lctpic=document.getElementById("lctpic");
 		var itnpic=document.getElementById("itnpic");

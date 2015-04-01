@@ -84,15 +84,25 @@
 	}
 #list_top ul
 	{
-	padding:0px 20px 20px 25px;
+	padding:5px 20px 15px 20px;
 	background-color:white;
 	border:solid 2px #cccccc;
 	border-radius:5px;
 	}
 #list_top li
 	{
-	margin-top:20px;
+	padding:3px 0;
+	padding-left:7px;
+	margin-top:10px;
 	cursor:pointer;
+	}
+#list_top li:hover
+	{
+	background-color:#666666;
+	}
+#list_top li:hover p
+	{
+	color:white;
 	}
 #list_top ul img
 	{
@@ -102,7 +112,7 @@
 	}
 #list_top ul p
 	{
-	padding-top:4px;
+	padding:3px 0;
 	text-indent:15px;
 	font-size:18px;
 	color:#cccccc;

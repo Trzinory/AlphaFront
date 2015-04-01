@@ -20,7 +20,7 @@ window.onload=function(){
 		}
 		//从顶滑下
 		if(flag==1&&scrollFlag!=flag){
-			$("#intro_top").css("display","none");
+			$("#intro_top").hide();
 			$("#nav_top").css("background-color","rgba(102,153,255,0.8)");
 			$("#search").css("margin-top","15px");
 			$("#lr").css("margin-top","17px");
@@ -29,7 +29,7 @@ window.onload=function(){
 		}
 		//从下滑到顶
 		else if(flag==0&&scrollFlag!=flag){
-			$("#intro_top").css("display","block");
+			$("#intro_top").show();
 			$("#nav_top").css("background-color","rgba(102,153,255,1)");
 			$("#search").css("margin-top","25px");
 			$("#lr").css("margin-top","27px");
@@ -60,32 +60,42 @@ window.onload=function(){
 
 	//弹出框
 	$("#log").click(function(){
-		$("#popup,#lr_box,#log_box,#log_button").css("display","block");
+		$("#popup,#lr_box,#log_box,#log_button").show();
 		$("#move_stick").css("left",0);
 		var h=parseInt($("#lr_box").css("height"));
 		$("#lr_box").css({top:"50%",marginTop:-h/2+"px"});
 	});
 	$("#reg").click(function(){
-		$("#popup,#lr_box,#reg_box,#reg_button").css("display","block");
+		$("#popup,#lr_box,#reg_box,#reg_button").show();
 		$("#move_stick").css("left","88px");
 		var h=parseInt($("#lr_box").css("height"));
 		$("#lr_box").css({top:"50%",marginTop:-h/2+"px"});
 	});
 	$("#login").click(function(){
-		$("#log_box,#log_button").css("display","block");
-		$("#reg_box,#reg_button").css("display","none");
+		$("#log_box,#log_button").css({left:"450px"});
+		$("#reg_box,#reg_button").animate({left:"-450px"},300);
+		setTimeout(function(){
+			$("#reg_box,#reg_button").hide();
+			$("#log_box,#log_button").show();
+			$("#log_box,#log_button").animate({left:"0px"},300);
+		},300)
 		$("#move_stick").animate({left:0},200);
 	});
 	$("#regis").click(function(){
-		$("#reg_box,#reg_button").css("display","block");
-		$("#log_box,#log_button").css("display","none");
+		$("#reg_box,#reg_button").css({left:"-450px"});
+		$("#log_box,#log_button").animate({left:"450px"},300);
+		setTimeout(function(){
+			$("#log_box,#log_button").hide();
+			$("#reg_box,#reg_button").show();
+			$("#reg_box,#reg_button").animate({left:"0px"},300);
+		},300)
 		$("#move_stick").animate({left:"88px"},200);
 	});
 	$("#close,#popup_bottom").click(function(){
-		$("#popup,#lr_box,#log_box,#reg_box,#log_button,#reg_button,#origin_pic").css("display","none");
+		$("#popup,#lr_box,#log_box,#reg_box,#log_button,#reg_button,#origin_pic").hide();
 	});
 	$(".pic_box img").click(function(){
-		$("#popup,#origin_pic").css("display","block");
+		$("#popup,#origin_pic").show();
 		$("#origin_pic img").attr(src);
 		var h=parseInt($("#origin_pic").css("height"));
 		$("#origin_pic").css({top:"50%",marginTop:-h/2+"px"});

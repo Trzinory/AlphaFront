@@ -28,7 +28,7 @@ window.onload=function(){
 	$("#list_top li:eq(2)").mouseout(function(){
 		$("#list_top img:eq(2)").attr({"src":"./img/paperplane.png"});
 	});
-	
+
 	//随拉动条变化
 	var scrollFlag=0;
 	//0表示视窗在最顶，1表示不在最顶
@@ -60,29 +60,29 @@ window.onload=function(){
 	});
 	//弹出框
 	$("#log").click(function(){
-		$("#popup,#lr_box,#log_box,#log_button").css("display","block");
+		$("#popup,#lr_box,#log_box,#log_button").show();
 		$("#move_stick").css("left",0);
 		var h=parseInt($("#lr_box").css("height"));
 		$("#lr_box").css({top:"50%",marginTop:-h/2+"px"});
 	});
 	$("#reg").click(function(){
-		$("#popup,#lr_box,#reg_box,#reg_button").css("display","block");
+		$("#popup,#lr_box,#reg_box,#reg_button").show();
 		$("#move_stick").css("left","88px");
 		var h=parseInt($("#lr_box").css("height"));
 		$("#lr_box").css({top:"50%",marginTop:-h/2+"px"});
 	});
 	$("#login").click(function(){
-		$("#log_box,#log_button").css("display","block");
-		$("#reg_box,#reg_button").css("display","none");
+		$("#log_box,#log_button").show();
+		$("#reg_box,#reg_button").hide();
 		$("#move_stick").animate({left:0},200);
 	});
 	$("#regis").click(function(){
-		$("#reg_box,#reg_button").css("display","block");
-		$("#log_box,#log_button").css("display","none");
+		$("#reg_box,#reg_button").show();
+		$("#log_box,#log_button").hide();
 		$("#move_stick").animate({left:"88px"},200);
 	});
 	$("#close,#popup_bottom").click(function(){
-		$("#popup,#lr_box,#log_box,#reg_box,#log_button,#reg_button,#origin_pic").css("display","none");
+		$("#popup,#lr_box,#log_box,#reg_box,#log_button,#reg_button,#origin_pic").hide();
 	});
 
 	//评论栏功能
