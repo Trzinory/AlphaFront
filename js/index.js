@@ -38,6 +38,26 @@ window.onload=function(){
 		}
 	});
 
+	//顶栏
+	$("#list_top li:eq(0)").mouseover(function(){
+		$("#list_top img:eq(0)").attr({"src":"./img/settings2.png"});
+	});
+	$("#list_top li:eq(1)").mouseover(function(){
+		$("#list_top img:eq(1)").attr({"src":"./img/pen2.png"});
+	});
+	$("#list_top li:eq(2)").mouseover(function(){
+		$("#list_top img:eq(2)").attr({"src":"./img/paperplane2.png"});
+	});
+	$("#list_top li:eq(0)").mouseout(function(){
+		$("#list_top img:eq(0)").attr({"src":"./img/settings.png"});
+	});
+	$("#list_top li:eq(1)").mouseout(function(){
+		$("#list_top img:eq(1)").attr({"src":"./img/pen.png"});
+	});
+	$("#list_top li:eq(2)").mouseout(function(){
+		$("#list_top img:eq(2)").attr({"src":"./img/paperplane.png"});
+	});
+
 	//弹出框
 	$("#log").click(function(){
 		$("#popup,#lr_box,#log_box,#log_button").css("display","block");
@@ -73,7 +93,7 @@ window.onload=function(){
 
 	//正文区点击
 	//标题
-	$(".title").click(function(){
+	$(".title .summary").click(function(){
 		window.open("./article.html","_self");
 	});
 	//图片滚动事件
