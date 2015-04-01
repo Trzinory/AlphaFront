@@ -38,28 +38,6 @@ window.onload=function(){
 		}
 	});
 
-	//图片滚动事件
-	var picbox=document.getElementsByClassName("pic_box");
-	var num=0,t;
-	function picSlide(e){
-		e=e||window.event;
-		e.preventDefault();
-		var d=e.wheelDelta?e.wheelDelta:e.detail;
-    	var len=$("img",this).length;
-    	var w=parseInt($("img",this).css("width"))+9;
-    	var n=0;
-    	if(d>0)n=1;
-    	else n=-1;
-    	$("img",this).stop(true,true);
-    	var left=parseInt($("img:first",this).css("left"));
-    	if((left>w-1&&n>0)||(left<-w*(len-2)+1&&n<0))
-    		return;
-    	$("img",this).animate({left:"+="+n*w+"px"},"fast");
-    }
-    for(var i=0;i<picbox.length;i++){
-		picbox[i].onmousewheel=picSlide;
-	}
-
 	//弹出框
 	$("#log").click(function(){
 		$("#popup,#lr_box,#log_box,#log_button").css("display","block");
@@ -93,5 +71,30 @@ window.onload=function(){
 		$("#origin_pic").css({top:"50%",marginTop:-h/2+"px"});
 	});
 
-	//顶栏
+	//正文区点击
+	//标题
+	$(".title").click(function(){
+		window.open("./article.html","_self");
+	});
+	//图片滚动事件
+	var picbox=document.getElementsByClassName("pic_box");
+	var num=0,t;
+	function picSlide(e){
+		e=e||window.event;
+		e.preventDefault();
+		var d=e.wheelDelta?e.wheelDelta:e.detail;
+    	var len=$("img",this).length;
+    	var w=parseInt($("img",this).css("width"))+9;
+    	var n=0;
+    	if(d>0)n=1;
+    	else n=-1;
+    	$("img",this).stop(true,true);
+    	var left=parseInt($("img:first",this).css("left"));
+    	if((left>w-1&&n>0)||(left<-w*(len-2)+1&&n<0))
+    		return;
+    	$("img",this).animate({left:"+="+n*w+"px"},"fast");
+    }
+    for(var i=0;i<picbox.length;i++){
+		picbox[i].onmousewheel=picSlide;
+	}
 };
