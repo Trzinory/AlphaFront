@@ -63,35 +63,39 @@ window.onload=function(){
 		$("#log_box,#log_button").css({left:"0px"});
 		$("#popup,#lr_box,#log_box,#log_button").show();
 		$("#move_stick").css("left",0);
-		var h=parseInt($("#lr_box").css("height"));
-		$("#lr_box").css({top:"50%",marginTop:-h/2+"px"});
+		//var h=parseInt($("#lr_box").css("height"));
+		//$("#lr_box").css({top:"50%",marginTop:-h/2+"px"});
 	});
 	$("#reg").click(function(){
 		$("#reg_box,#reg_button").css({left:"0px"});
 		$("#popup,#lr_box,#reg_box,#reg_button").show();
 		$("#move_stick").css("left","88px");
-		var h=parseInt($("#lr_box").css("height"));
-		$("#lr_box").css({top:"50%",marginTop:-h/2+"px"});
+		//var h=parseInt($("#lr_box").css("height"));
+		//$("#lr_box").css({top:"50%",marginTop:-h/2+"px"});
 	});
 	$("#login").click(function(){
-		$("#log_box,#log_button").css({left:"-450px"});
-		$("#reg_box,#reg_button").animate({left:"450px"},300);
-		setTimeout(function(){
-			$("#reg_box,#reg_button").hide();
-			$("#log_box,#log_button").show();
-			$("#log_box,#log_button").animate({left:"0px"},300);
-		},300)
-		$("#move_stick").animate({left:0},200);
+		if($("#move_stick").css("left")=="88px"){
+			$("#log_box,#log_button").css({left:"-450px"});
+			$("#reg_box,#reg_button").animate({left:"450px"},300);
+			setTimeout(function(){
+				$("#reg_box,#reg_button").hide();
+				$("#log_box,#log_button").show();
+				$("#log_box,#log_button").animate({left:"0px"},300);
+			},300);
+			$("#move_stick").animate({left:0},200);
+		}
 	});
 	$("#regis").click(function(){
-		$("#reg_box,#reg_button").css({left:"450px"});
-		$("#log_box,#log_button").animate({left:"-450px"},300);
-		setTimeout(function(){
-			$("#log_box,#log_button").hide();
-			$("#reg_box,#reg_button").show();
-			$("#reg_box,#reg_button").animate({left:"0px"},300);
-		},300)
-		$("#move_stick").animate({left:"88px"},200);
+		if($("#move_stick").css("left")=="0px"){
+			$("#reg_box,#reg_button").css({left:"450px"});
+			$("#log_box,#log_button").animate({left:"-450px"},300);
+			setTimeout(function(){
+				$("#log_box,#log_button").hide();
+				$("#reg_box,#reg_button").show();
+				$("#reg_box,#reg_button").animate({left:"0px"},300);
+			},300);
+			$("#move_stick").animate({left:"88px"},200);
+		}
 	});
 	$("#close,#popup_bottom").click(function(){
 		$("#popup,#lr_box,#log_box,#reg_box,#log_button,#reg_button,#origin_pic").hide();

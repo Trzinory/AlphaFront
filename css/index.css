@@ -258,7 +258,9 @@ ul
 	display:none;
 	position:fixed;
 	left:50%;
+	top:50%;
 	margin-left:-250px;
+	margin-top:-271px;
 	width:500px;
 	background-color:white;
 	box-shadow:0 0 5px black;
