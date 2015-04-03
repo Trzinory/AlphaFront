@@ -94,15 +94,12 @@ window.onload=function(){
 			this.style.height=0+"px";
 			if(this.scrollHeight>this.offsetHeight){
 				this.style.height=this.scrollHeight+50+"px";
-				main2.style.height=this.scrollHeight+150+"px";
-				resize();
 				window.scrollTo(0,document.body.scrollHeight-20);
-				return;
 			}
-			this.style.height=this.scrollHeight+"px";
-			main2.style.height=this.scrollHeight+150+"px";
-			resize();
-			window.scrollTo(0,document.body.scrollHeight-20);
+			else {
+				this.style.height=this.scrollHeight+"px";
+				window.scrollTo(0,document.body.scrollHeight-20);
+			}
 		}
 
 		//函数区
