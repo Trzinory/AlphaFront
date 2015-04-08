@@ -7,10 +7,11 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <link href="./css/writting.css" rel="stylesheet">
-<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
-</script>
+<!--<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
+</script>-->
 <script src="./js/writting.js">
 </script>
+<script src="./js/jquery-1.11.2.js"></script>
 </head>
 <body>
 	<div id="nav_top">
@@ -48,35 +49,43 @@
    		<div id="formula_bar">
 			<ul>
 				<li class="nav2_right" id="article_pub">
-					<img src="./img/writing/redo.png">
+					<img src="./img/writting/redo.png">
 					<div>发布文章</div>
 				</li>
 				<li class="nav2_right" id="article_edit">
-					<img src="./img/writing/pencil.png">
+					<img src="./img/writting/pencil.png">
 					<div>编辑</div>
 				</li>
-				<li class="nav2 nav2_right">
-					<img src="./img/writing/menu_white2.png">
-					<div id="article_type">
-						<ul>
-							<li class="type">前端</li>
-							<li class="type">Python</li>
-							<li class="type">C++</li>
-							<li class="type">产品</li>
-						</ul>
-					</div>
+				<li class="nav2 nav2_left" id="first_nav2">
+					<img src="./img/writting/image.png">
 				</li>
-				<li class="nav2_right">
-					<div id="what_type"></div>
+				<li class="nav2 nav2_left" id="style">
+					<img src="./img/writting/T.png">
+					<ul>
+						<li class="nav2">
+							<img src="./img/writting/b.png">
+						</li>
+						<li class="nav2">
+							<img src="./img/writting/u.png">
+						</li>
+						<li class="nav2">
+							<img src="./img/writting/i.png">
+						</li>
+					</ul>
 				</li>
-				<li class="nav2 nav2_left">
-					<img src="./img/writing/embed.png">
-				</li>
-				<li class="nav2 nav2_left">
-					<img src="./img/writing/link.png">
-				</li>
-				<li class="nav2 nav2_left">
-					<img src="./img/writing/image.png">
+				<li class="nav2 nav2_left" id="align">
+					<img src="./img/writting/pjustify.png">
+					<ul>
+						<li class="nav2">
+							<img src="./img/writting/pcenter.png">
+						</li>
+						<li class="nav2">
+							<img src="./img/writting/pleft.png">
+						</li>
+						<li class="nav2">
+							<img src="./img/writting/pright.png">
+						</li>
+					</ul>
 				</li>
 				<p class="clear"></p>
 			</ul>
@@ -85,28 +94,14 @@
 	<div id="main2">
 		<div id="content2">
 			<div>
-				<textarea id="write_title" rows=1 maxlength="50"></textarea>
-				<textarea id="write_text" maxlength="10000"></textarea>
+				<textarea id="write_title" rows=1 maxlength="30"></textarea>
+				<div id="write_text" contenteditable><div><br></div></div>
 			</div>
 		</div>
 	</div>
 	<div id="popup">
 		<div id="popup_bottom"></div>
 		<div id="popup_top">
-			<div id="link_box">
-				<h2>插入链接</h2>
-				<div class="link">
-					<img src="./img/writing/link.png">
-					<input type="text" placeholder="链接地址" />
-				</div>
-				<div class="link">
-					<img src="./img/writing/font.png">
-					<input type="text" placeholder="链接文本" />
-				</div>
-				<span class="popup_confirm">确认</span>
-				<span class="popup_cancel">取消</span>
-				<p class="clear"></p>
-			</div>
 			<div id="pic_box">
 				<h2>插入图片</h2>
 				<div>
@@ -116,12 +111,15 @@
 					<div class="clear"></div>
 				</div>
 				<div id="lctpic">选择图片上传</div>
+				<input type="file" id="file" accept="image/*">
 				<div class="link" id="itnpic">
-					<img src="./img/writing/link.png">
+					<img src="./img/writting/link.png">
 					<input type="text" placeholder="图片链接" />
 				</div>
-				<span class="popup_confirm">确认</span>
-				<span class="popup_cancel">取消</span>
+				<p class="c">
+					<span class="popup_cancel">取消</span>
+					<span class="popup_confirm">确认</span>
+				</p>
 				<p class="clear"></p>
 			</div>
 		</div>

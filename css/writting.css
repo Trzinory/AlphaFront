@@ -152,6 +152,9 @@
 		width:100%;
 		background-color:#a1a1a1;
 	}
+	#first_nav2{
+		margin-left:14px;
+	}
 	#formula_bar ul li:hover {
 		background-color:#414141;
 	}
@@ -159,6 +162,7 @@
 		width:45px;
 		height:45px;
 		padding:8px 8px 4px 8px;
+		background-color:#a1a1a1;
 	}
 	.nav2_empty {
 		width:45px;
@@ -230,6 +234,32 @@
 	#article_edit div {
 		padding-right:0px;
 	}
+	#style ul{
+		display:none;
+	}
+	#style:hover ul{
+		display:block;
+	}
+	#style li{
+		margin-left:-8px;
+		cursor:default;
+	}
+	#style img{
+		position:relative;
+	}
+	#align ul{
+		display:none;
+	}
+	#align:hover ul{
+		display:block;
+	}
+	#align li{
+		margin-left:-8px;
+	}
+	#align img{
+		position:relative;
+		top:-2px;
+	}
 
 
 	/*----------------------main2----------------------*/
@@ -246,15 +276,15 @@
 		width:600px;
 		border:1px solid;
 	}
-	#content2 div {
+	#content2>div {
 		background-color:#fefeeb;
 		overflow:hidden;
 	}
-	#content2 div textarea {
+	#write_title,#write_text {
 		width:560px;
 		background-color:#fefeeb;
 	}
-	#content2 div textarea:focus {
+	#write_text:focus {
 		outline:none;
 	}
 	#write_title {
@@ -298,7 +328,7 @@
 		position:fixed;
 		left:50%;
 		top:50%;
-		margin:0 0 0 -174.5px;
+		margin:0 0 0 -210px;
 		z-index:100;
 	}
 	#popup_top>div {
@@ -336,18 +366,20 @@
 	.link input:focus {
 		outline:none;
 	}
-	#popup_top>div>span {
+	.c {
 		float:right;
 		margin-top:15px;
 		margin-bottom:20px;
+		margin-right:60px;
 		color:#a1a1a1;
 	}
 	.popup_confirm {
-		margin-right:70px;
+		margin-right:10px;
+		margin-left:20px;
 		cursor:pointer;
 	}
 	.popup_cancel {
-		margin-right:30px;
+		margin-right:10px;
 		cursor:pointer;
 	}
 	#pic_box {
@@ -369,6 +401,7 @@
 		color:white;
 		text-align:center;
 		background-color:#414141;
+		cursor:pointer;
 	}
 	#lctup {
 		margin-left:60px;
@@ -381,3 +414,7 @@
 		display:none;
 		margin-bottom:-1px;
 	}
+	#file
+		{
+		display:none;
+		}
