@@ -2,6 +2,13 @@ window.onload=function(){
 	//根据窗口大小调整页面布局
 	//拉动条影响的可视窗口变化
 	//顶栏
+	//返回按钮
+	$("#backwards").click(function(){
+		if(window.history.back()){}
+		else 
+			window.open("./index.html","_self");
+	});
+	//用户功能
 	$("#list_top li:eq(0)").mouseover(function(){
 		$("#list_top img:eq(0)").attr({"src":"./img/settings2.png"});
 	});
@@ -60,7 +67,6 @@ window.onload=function(){
 			var files=document.getElementById("file").files;
 			var reader=new FileReader();
 			for(var i=0;i<files.length;i++){
-				reader.readAsDataURL(files[i]);
 				reader.onload=function(){
 					if(/image/.test(files[0].type)){
 						var img=document.createElement("img");
@@ -71,6 +77,7 @@ window.onload=function(){
         				alert("请选择图片文件");
         			}
 				}
+				reader.readAsDataURL(files[i]);
 			}
 		});
 		$(".popup_confirm").click(function(){
@@ -101,7 +108,7 @@ window.onload=function(){
 
 		//设置文本样式
 		$("#article_pub").click(function(){
-			alert($("#write_text").html()+"+"+$("#write_text").text());
+			alert($("#write_text").html());
 		});
 		$("#style>img").click(function(){
 			range=window.getSelection().getRangeAt(0);
@@ -159,7 +166,7 @@ window.onload=function(){
 				div.className="float";
 				div.style.float="none";
 				div.style.textAlign="center";
-				div.style.border="1px solid";
+				//p.style.border="1px solid";
 				var pclass=range.startContainer.parentNode.className;
 				var ppclass=range.startContainer.parentNode.parentNode.className;
 				if(range.startContainer.tagName){
@@ -171,7 +178,7 @@ window.onload=function(){
 					else{
 						$(range.startContainer).wrap(div);
 						if($(range.startContainer.parentNode).next().length==0){
-							$("#write_text").append("<div><br></div>")
+							$("#write_text").append("<p><br></p>")
 						}
 					}
 				}
@@ -183,7 +190,7 @@ window.onload=function(){
 					else{
 						$(range.startContainer.parentNode).wrap(div);
 						if($(range.startContainer.parentNode.parentNode).next().length==0){
-							$("#write_text").append("<div><br></div>")
+							$("#write_text").append("<p><br></p>")
 						}
 					}
 				}
@@ -195,9 +202,9 @@ window.onload=function(){
 				var div=document.createElement("div");
 				div.className="float";
 				div.style.float="left";
-				div.style.clear="both";
-				div.style.border="1px solid";
-				//div.oninput=function(){}
+				//p.style.clear="both";
+				//p.style.border="1px solid";
+				//p.oninput=function(){}
 				var pclass=range.startContainer.parentNode.className;
 				var ppclass=range.startContainer.parentNode.parentNode.className;
 				if(range.startContainer.tagName){
@@ -208,7 +215,7 @@ window.onload=function(){
 					else{
 						$(range.startContainer).wrap(div);
 						if($(range.startContainer.parentNode).next().length==0){
-							$("#write_text").append("<div><br></div>")
+							$("#write_text").append("<p><br></p>")
 						}
 					}
 				}
@@ -219,9 +226,8 @@ window.onload=function(){
 					}
 					else{
 						$(range.startContainer.parentNode).wrap(div);
-						alert($(range.startContainer.parentNode.parentNode).next().length)
 						if($(range.startContainer.parentNode.parentNode).next().length==0){
-							$("#write_text").append("<div><br></div>")
+							$("#write_text").append("<p><br></p>")
 						}
 					}
 				}
@@ -233,9 +239,9 @@ window.onload=function(){
 				var div=document.createElement("div");
 				div.className="float";
 				div.style.float="right";
-				div.style.clear="both";
-				div.style.border="1px solid";
-				//div.oninput=function(){}
+				//p.style.clear="both";
+				//p.style.border="1px solid";
+				//p.oninput=function(){}
 				var pclass=range.startContainer.parentNode.className;
 				var ppclass=range.startContainer.parentNode.parentNode.className;
 				if(range.startContainer.tagName){
@@ -246,7 +252,7 @@ window.onload=function(){
 					else{
 						$(range.startContainer).wrap(div);
 						if($(range.startContainer.parentNode).next().length==0){
-							$("#write_text").append("<div><br></div>")
+							$("#write_text").append("<p><br></p>")
 						}
 					}
 				}
@@ -258,7 +264,7 @@ window.onload=function(){
 					else{
 						$(range.startContainer.parentNode).wrap(div);
 						if($(range.startContainer.parentNode.parentNode).next().length==0){
-							$("#write_text").append("<div><br></div>");
+							$("#write_text").append("<p><br></p>");
 						}
 					}
 				}
@@ -268,19 +274,93 @@ window.onload=function(){
 
 	//写作编辑框自动调整长度功能
 		var writetext=document.getElementById("write_text");
+		var heightMark=300;
 		writetext.oninput=function(){
 			if(!($("#write_text").text())){
-				$("#write_text").html("<div><br></div>");
+				$("#write_text").append("<p contenteditable='false'> </p><p><br></p>");
+				setTimeout(function(){
+				var r=document.createRange();
+				r.setStart(writetext.childNodes[1].childNodes[0],0);
+				r.setEnd(writetext.childNodes[1].childNodes[0],0);
+				window.getSelection().removeAllRanges();
+				window.getSelection().addRange(r);
+				},1);
 			}
+			var h=document.body.scrollTop;
 			this.style.height=0+"px";
-			if(this.scrollHeight>this.offsetHeight){
+			if(this.scrollHeight>300){
 				this.style.height=this.scrollHeight+50+"px";
-				window.scrollTo(0,document.body.scrollHeight-20);
+				window.scrollTo(0,h+this.scrollHeight-heightMark);
+				heightMark=this.scrollHeight;
+			}
+			else{
+				this.style.height=this.scrollHeight+"px";
+			}
+		}
+
+	//对粘贴内容作格式化处理
+		/*/
+		var node,len1,frag,frag1,frag2,html1,html2;
+		writetext.onpaste=function(e){
+			//alert(e.clipboardData.getData("Text"));
+			range=window.getSelection().getRangeAt(0);
+			if(range.startContainer.tagName=="P"){
+				node=range.startContainer;
 			}
 			else {
-				this.style.height=this.scrollHeight+"px";
-				window.scrollTo(0,document.body.scrollHeight-20);
+				node=range.startContainer.parentNode;
 			}
+			range.setStart(node,0);
+			len1=range.toString().length;
+			node.id="node";
+			range.setStart(writetext,0);
+			var p=document.createElement("p");
+			frag=range.extractContents();
+			p.appendChild(frag);
+			frag1=p.innerHTML;
+			html1=frag1.slice(0,-4);
+			frag2=writetext.innerHTML;
+			if(frag2.slice(-8,-4)=="<br>")
+				html2=frag2.slice(13,-8)+"</p>";
+			else
+				html2=frag2.slice(13);
+			writetext.innerHTML="";
+			setTimeout(function(){
+				if(!writetext.innerHTML){
+					writetext.innerHTML=frag1+frag2.slice(13);
+				}
+			},1000);
+			$("#write_text").one("input",function(){
+				if(this.childNodes.length==1&&this.childNodes[0].nodeType==3){
+					//只有一个子节点且该节点为文本节点
+					var len=this.textContent.length+len1;
+				}
+				else{
+					var len=this.lastChild.length;
+				}alert(this.childNodes.length)
+				$(this).html(html1+$(this).html()+html2);
+				node=document.getElementById("node").lastChild;
+				range.setStart(node,len);
+				range.setEnd(node,len);
+    			window.getSelection().removeAllRanges();
+				window.getSelection().addRange(range);
+				node.parentNode.removeAttribute("id");
+			});
+		}
+		//*/
+		writetext.onpaste=function(e){
+			var data=e.clipboardData;
+			document.execCommand("insertText",false,data.getData("text/plain"));
+			for(var i=0;i<$("#write_text p").length;i++){
+				var s=$("#write_text p:eq("+i+")").html();
+				if(s.charCodeAt(0)==13){
+					$("#write_text p:eq("+i+")").html("<br>");
+				}
+				else if(s.charCodeAt(s.length-1)==13){
+					$("#write_text p:eq("+i+")").html(s.slice(0,-1));
+				}
+			}
+			e.preventDefault();
 		}
 
 	//函数区

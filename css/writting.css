@@ -308,6 +308,21 @@
 		border:none;
 		overflow-y:hidden;
 	}
+	#write_text p:first-child{
+		border:none;
+	}
+	#write_text>p{
+		border:1px solid;
+		margin-bottom:1px;
+		word-break:break-all;
+	}
+	#write_text>div{
+		border:1px solid;
+		margin-bottom:1px;
+	}
+	#write_text img{
+		max-width:500px;
+	}
 	
 
 	/*-----------------------popup----------------------*/
@@ -315,7 +330,7 @@
 		display:none;
 	}
 	#popup_bottom {
-		position:absolute;
+		position:fixed;
 		top:0;
 		left:0;
 		width:100%;

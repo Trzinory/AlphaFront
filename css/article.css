@@ -592,6 +592,7 @@ textarea
 	margin-top:2px;
 	width:145px;
 	height:50px;
+	cursor:pointer;
 	}
 .code_check>p
 	{
