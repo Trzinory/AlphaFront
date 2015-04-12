@@ -312,13 +312,11 @@
 		border:none;
 	}
 	#write_text>p{
-		border:1px solid;
+		border:none;
 		margin-bottom:1px;
 		word-break:break-all;
 	}
 	#write_text>div{
-		border:1px solid;
-		margin-bottom:1px;
 	}
 	#write_text img{
 		max-width:500px;

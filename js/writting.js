@@ -27,6 +27,12 @@ window.onload=function(){
 	$("#list_top li:eq(2)").mouseout(function(){
 		$("#list_top img:eq(2)").attr({"src":"./img/paperplane.png"});
 	});
+	$("#list_top li:eq(2)").click(function(){
+		var form=document.createElement("form");
+		form.method="get";
+		form.action="/logout";
+		form.submit();
+	});
 
 	//编辑栏功能
 		var id=new Array();
@@ -63,20 +69,23 @@ window.onload=function(){
 		$("#lctpic").click(function(){
 			$("#file").click();
 		});
-		$("#file").change(function(){
-			var files=document.getElementById("file").files;
+		var form=document.getElementById("form");
+		var file=document.getElementById("file");
+		$("#file").change(function(){alert("h")
+			var files=file.files;
 			var reader=new FileReader();
+			reader.onload=function(){
+				if(/image/.test(files[0].type)){
+					var img=document.createElement("img");
+					img.src=this.result;
+        			range.insertNode(img);
+        		}
+        		else{
+        			alert("请选择图片文件");
+        		}
+        		form.reset();
+			}
 			for(var i=0;i<files.length;i++){
-				reader.onload=function(){
-					if(/image/.test(files[0].type)){
-						var img=document.createElement("img");
-						img.src=this.result;
-        				range.insertNode(img);
-        			}
-        			else{
-        				alert("请选择图片文件");
-        			}
-				}
 				reader.readAsDataURL(files[i]);
 			}
 		});
@@ -107,9 +116,11 @@ window.onload=function(){
 		});
 
 		//设置文本样式
+		/*
 		$("#article_pub").click(function(){
 			alert($("#write_text").html());
 		});
+		//*/
 		$("#style>img").click(function(){
 			range=window.getSelection().getRangeAt(0);
 			var rangestr=range.toString();
@@ -270,6 +281,13 @@ window.onload=function(){
 				}
 			}
 		});
+		$(".nav2_left:eq(3)").click(function(){
+			if(/none/.test($("#write_text > p").css("border")))
+				$("#write_text > p").css("border","1px solid");
+			else
+				$("#write_text > p").css("border","none");
+		}
+		);
 
 
 	//写作编辑框自动调整长度功能
