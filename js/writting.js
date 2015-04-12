@@ -69,24 +69,36 @@ window.onload=function(){
 		$("#lctpic").click(function(){
 			$("#file").click();
 		});
-		var form=document.getElementById("form");
 		var file=document.getElementById("file");
-		$("#file").change(function(){alert("h")
-			var files=file.files;
-			var reader=new FileReader();
-			reader.onload=function(){
-				if(/image/.test(files[0].type)){
+		var form=document.getElementById("form");
+		$("#file").change(function(){
+			if(/image/.test(file.files[0].type)){
+				if(window.webkitURL){
 					var img=document.createElement("img");
-					img.src=this.result;
-        			range.insertNode(img);
-        		}
-        		else{
-        			alert("请选择图片文件");
-        		}
+					img.src=window.webkitURL.createObjectURL(file.files[0]);
+					range.insertNode(img);
+				}
+				else if(window.URL){
+					var img=document.createElement("img");
+					img.src=window.URL.createObjectURL(file.files[0]);
+					range.insertNode(img);
+				}
+				else if(window.FileReader){
+					var reader=new FileReader();
+					reader.onload=function(){
+						var img=document.createElement("img");
+						img.src=this.result;
+        				range.insertNode(img);
+					}
+					reader.readAsDataURL(file.files[0]);
+				}
+				else{
+					alert("该浏览器无法插入图片");
+				}
         		form.reset();
 			}
-			for(var i=0;i<files.length;i++){
-				reader.readAsDataURL(files[i]);
+			else{
+				alert("请选择图片文件");
 			}
 		});
 		$(".popup_confirm").click(function(){
@@ -153,7 +165,6 @@ window.onload=function(){
 		$("#align>img").click(function(){
 			//alert(writetext.innerHTML);
 			range=window.getSelection().getRangeAt(0);
-			alert(range.startContainer.parentNode)
 			if($(range.startContainer).parents("#write_text").length>0){
 				var pclass=range.startContainer.parentNode.className;
 				var ppclass=range.startContainer.parentNode.parentNode.className;
@@ -177,7 +188,7 @@ window.onload=function(){
 				div.className="float";
 				div.style.float="none";
 				div.style.textAlign="center";
-				//p.style.border="1px solid";
+				//div.style.border="none";
 				var pclass=range.startContainer.parentNode.className;
 				var ppclass=range.startContainer.parentNode.parentNode.className;
 				if(range.startContainer.tagName){
@@ -214,7 +225,7 @@ window.onload=function(){
 				div.className="float";
 				div.style.float="left";
 				//p.style.clear="both";
-				//p.style.border="1px solid";
+				//div.style.border="none";
 				//p.oninput=function(){}
 				var pclass=range.startContainer.parentNode.className;
 				var ppclass=range.startContainer.parentNode.parentNode.className;
@@ -251,7 +262,7 @@ window.onload=function(){
 				div.className="float";
 				div.style.float="right";
 				//p.style.clear="both";
-				//p.style.border="1px solid";
+				//div.style.border="none";
 				//p.oninput=function(){}
 				var pclass=range.startContainer.parentNode.className;
 				var ppclass=range.startContainer.parentNode.parentNode.className;
@@ -281,13 +292,17 @@ window.onload=function(){
 				}
 			}
 		});
+		var borderFlag=0;
 		$(".nav2_left:eq(3)").click(function(){
-			if(/none/.test($("#write_text > p").css("border")))
-				$("#write_text > p").css("border","1px solid");
-			else
-				$("#write_text > p").css("border","none");
-		}
-		);
+			if(borderFlag==0){
+				$("#write_text p,#write_text > div").css("border","1px solid");
+				borderFlag=1;
+			}
+			else{
+				$("#write_text p,#write_text div").css("border","");
+				borderFlag=0;
+			}
+		});
 
 
 	//写作编辑框自动调整长度功能

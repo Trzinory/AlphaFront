@@ -317,6 +317,7 @@
 		word-break:break-all;
 	}
 	#write_text>div{
+		border:none;
 	}
 	#write_text img{
 		max-width:500px;
@@ -429,5 +430,6 @@
 	}
 	#file
 		{
-		display:none;
+		position:absolute;
+		top:-9999px;
 		}
