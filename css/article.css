@@ -32,7 +32,7 @@ textarea
 	}
 #lr
 	{
-	margin:17px 20px 0 5px;
+	margin:17px 20px 0 25px;
 	float:right;
 	color:#ffffff;
 	font-size:18px;
@@ -54,11 +54,11 @@ textarea
 #user
 	{
 	float:right;
-	width:80px;
-	margin-top:0px;
-	margin-right:40px;
-	margin-bottom:-10px;
+	margin:0px 40px -10px 20px;
 	}
+#user div{
+	float:right;
+}
 #user_face
 	{
 	width:60px;
@@ -69,17 +69,23 @@ textarea
 	}
 #triangle
 	{
-	float:right;
 	margin-top:25px;
 	border-top:solid 10px white;
 	border-left:solid 6px transparent;
 	border-right:solid 6px transparent;
+	}
+#uname
+	{
+	margin:17px 10px 0 10px;
+	color:white;
 	}
 #list_top
 	{
 	display:none;
 	position:absolute;
 	right:5px;
+	top:60px;
+	padding-top:20px;
 	width:160px;
 	}
 #user:hover #list_top
@@ -399,7 +405,9 @@ textarea
 #page div
 	{
 	float:left;
-	padding:4px 12px;
+	padding:4px 0px;
+	width:40px;
+	text-align:center;
 	border-left:solid #c1c1c1 1px;
 	border-top:solid #c1c1c1 1px;
 	border-bottom:solid #c1c1c1 1px;
@@ -410,13 +418,13 @@ textarea
 	{
 	background-color:#e1e1e1;
 	}
-#first
+#page div:first-child
 	{
 	background-color:#c1c1c1;
 	border-top-left-radius:3px;
 	border-bottom-left-radius:3px;
 	}
-#last
+#page div:last-child
 	{
 	border-right:solid #c1c1c1 1px;
 	border-top-right-radius:3px;
@@ -482,12 +490,13 @@ textarea
 	color:#6699ff;
 	cursor:pointer;
 	}
-#move_stick
+#lr_title p
 	{
 	position:relative;
 	top:14.5px;
-	width:81px;
+	width:83px;
 	border:solid 3px #6699ff;
+	border-radius:3px;
 	}
 #log_box
 	{

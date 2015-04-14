@@ -10,22 +10,34 @@ window.onload=function(){
 	});
 	//用户功能
 	$("#list_top li:eq(0)").mouseover(function(){
-		$("#list_top img:eq(0)").attr({"src":"./img/settings2.png"});
+		var src=$("#list_top img:eq(0)").attr("src");
+		var src2=src.replace(/settings/,"settings2");
+		$("#list_top img:eq(0)").attr({"src":src2});
 	});
 	$("#list_top li:eq(1)").mouseover(function(){
-		$("#list_top img:eq(1)").attr({"src":"./img/pen2.png"});
+		var src=$("#list_top img:eq(1)").attr("src");
+		var src2=src.replace(/pen/,"pen2");
+		$("#list_top img:eq(1)").attr({"src":src2});
 	});
 	$("#list_top li:eq(2)").mouseover(function(){
-		$("#list_top img:eq(2)").attr({"src":"./img/paperplane2.png"});
+		var src=$("#list_top img:eq(2)").attr("src");
+		var src2=src.replace(/paperplane/,"paperplane2");
+		$("#list_top img:eq(2)").attr({"src":src2});
 	});
 	$("#list_top li:eq(0)").mouseout(function(){
-		$("#list_top img:eq(0)").attr({"src":"./img/settings.png"});
+		var src=$("#list_top img:eq(0)").attr("src");
+		var src2=src.replace(/settings2/,"settings");
+		$("#list_top img:eq(0)").attr({"src":src2});
 	});
 	$("#list_top li:eq(1)").mouseout(function(){
-		$("#list_top img:eq(1)").attr({"src":"./img/pen.png"});
+		var src=$("#list_top img:eq(1)").attr("src");
+		var src2=src.replace(/pen2/,"pen");
+		$("#list_top img:eq(1)").attr({"src":src2});
 	});
 	$("#list_top li:eq(2)").mouseout(function(){
-		$("#list_top img:eq(2)").attr({"src":"./img/paperplane.png"});
+		var src=$("#list_top img:eq(2)").attr("src");
+		var src2=src.replace(/paperplane2/,"paperplane");
+		$("#list_top img:eq(2)").attr({"src":src2});
 	});
 	$("#list_top li:eq(2)").click(function(){
 		var form=document.createElement("form");
@@ -128,7 +140,7 @@ window.onload=function(){
 		});
 
 		//设置文本样式
-		/*
+		//*
 		$("#article_pub").click(function(){
 			alert($("#write_text").html());
 		});
@@ -310,14 +322,20 @@ window.onload=function(){
 		var heightMark=300;
 		writetext.oninput=function(){
 			if(!($("#write_text").text())){
-				$("#write_text").append("<p contenteditable='false'> </p><p><br></p>");
+				//chrome,safari
+				$("#write_text").html("<p contenteditable='false'> </p><p><br></p>");
 				setTimeout(function(){
-				var r=document.createRange();
-				r.setStart(writetext.childNodes[1].childNodes[0],0);
-				r.setEnd(writetext.childNodes[1].childNodes[0],0);
-				window.getSelection().removeAllRanges();
-				window.getSelection().addRange(r);
+					var r=document.createRange();
+					r.setStart(writetext.childNodes[1].childNodes[0],0);
+					r.setEnd(writetext.childNodes[1].childNodes[0],0);
+					window.getSelection().removeAllRanges();
+					window.getSelection().addRange(r);
 				},1);
+			}
+			else if($("#write_text").text()==" "){
+				//ff
+				$("#write_text").html("<p contenteditable='false'> </p><p><br></p>");
+				$("#write_title").focus();
 			}
 			var h=document.body.scrollTop;
 			this.style.height=0+"px";

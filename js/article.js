@@ -40,12 +40,21 @@ window.onload=function(){
 		var src2=src.replace(/paperplane2/,"paperplane");
 		$("#list_top img:eq(2)").attr({"src":src2});
 	});
+	$("#list_top li:eq(0)").click(function(){
+		window.open("./writting","_self");
+	});
+	$("#list_top li:eq(2)").click(function(){
+		var form=document.createElement("form");
+		form.method="get";
+		form.action="/logout";
+		form.submit();
+	});
 
 	//弹出框
 	$("#log").click(function(){
 		$("#log_box,#log_button").css({left:"0px"});
 		$("#popup,#lr_box,#log_box,#log_button").show();
-		$("#move_stick").css("left",0);
+		$("#lr_title p").css("left","-2px");
 		$("#lr_box input").val("");
 		$(".account p,.code_check p:eq(1)").text("");
 		$(".code_check:eq(0) img").attr({"src":"/getCAPTCHA/?nocache="+Math.random()});
@@ -56,7 +65,7 @@ window.onload=function(){
 	$("#reg").click(function(){
 		$("#reg_box,#reg_button").css({left:"0px"});
 		$("#popup,#lr_box,#reg_box,#reg_button").show();
-		$("#move_stick").css("left","88px");
+		$("#lr_title p").css("left","87px");
 		$("#lr_box input").val("");
 		$(".account p,.code_check p:eq(1)").text("");
 		$(".code_check:eq(1) img").attr({"src":"/getCAPTCHA/?nocache="+Math.random()});
@@ -65,7 +74,7 @@ window.onload=function(){
 		//$("#lr_box").css({top:"50%",marginTop:-h/2+"px"});
 	});
 	$("#login").click(function(){
-		if($("#move_stick").css("left")=="88px"){
+		if($("#lr_title p").css("left")=="87px"){
 			$("#log_box,#log_button").css({left:"-450px"});
 			$("#reg_box,#reg_button").animate({left:"450px"},300);
 			setTimeout(function(){
@@ -77,14 +86,14 @@ window.onload=function(){
 				$("#log_box input:eq(0)").focus();
 				$(".code_check:eq(0) img").attr({"src":"/getCAPTCHA/?nocache="+Math.random()});
 			},600);
-			$("#move_stick").animate({left:0},200);
+			$("#lr_title p").animate({left:"-2px"},200);
 		}
 		else {
 			$("#log_box input:eq(0)").focus();
 		}
 	});
 	$("#regis").click(function(){
-		if($("#move_stick").css("left")=="0px"){
+		if($("#lr_title p").css("left")=="-2px"){
 			$("#reg_box,#reg_button").css({left:"450px"});
 			$("#log_box,#log_button").animate({left:"-450px"},300);
 			setTimeout(function(){
@@ -96,7 +105,7 @@ window.onload=function(){
 				$("#reg_box input:eq(0)").focus();
 				$(".code_check:eq(1) img").attr({"src":"/getCAPTCHA/?nocache="+Math.random()});
 			},600);
-			$("#move_stick").animate({left:"88px"},200);
+			$("#lr_title p").animate({left:"87px"},200);
 		}
 		else {
 			$("#reg_box input:eq(0)").focus();
@@ -110,6 +119,12 @@ window.onload=function(){
 	});
 	$("#close,#popup_bottom").click(function(){
 		$("#popup,#lr_box,#log_box,#reg_box,#log_button,#reg_button,#origin_pic").hide();
+	});
+	$(".pic_box img").click(function(){
+		$("#popup,#origin_pic").show();
+		$("#origin_pic img").attr(src);
+		var h=parseInt($("#origin_pic").css("height"));
+		$("#origin_pic").css({top:"50%",marginTop:-h/2+"px"});
 	});
 	//submit时判断框内数据是否符合要求
 	$("#log_box").submit(function(e){
@@ -157,13 +172,106 @@ window.onload=function(){
 		}
 	});
 	$("#log_button").click(function(){
-		$('#log_box').submit();
+		var email=$("#log_box input:eq(0)").val();
+		var password=$("#log_box input:eq(1)").val();
+		var code=$("#log_box input:eq(2)").val();
+		if(!(email)){
+			$("#log_box p:eq(0)").text("值为空！");
+			flag1[0]=0;
+		}
+		if(!(password)){
+			$("#log_box p:eq(1)").text("值为空！");
+			flag1[1]=0;
+		}
+		if(code.length!=4){
+			$("#log_box p:eq(3)").text("位数不够！");
+			flag1[2]=0;
+		}
+		else{
+			flag1[2]=1;
+		}
+		if(flag1[0]==1&&flag1[1]==1&&flag1[2]==1){
+			var xmlhttp=new XMLHttpRequest();
+			xmlhttp.open("POST","/login",false);
+			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xmlhttp.send("email="+email+"&password="+password+"&valicode="+code);
+			if(xmlhttp.responseText.charAt(0)=="{"){
+				var AjaxObj=eval("("+xmlhttp.responseText+")");
+				if(AjaxObj.email){
+					$("#log_box p:eq(0)").text(AjaxObj.email);
+				}
+				else if(AjaxObj.password){
+					$("#log_box p:eq(1)").text(AjaxObj.password);
+				}
+				else if(AjaxObj.valicode){
+					$("#log_box p:eq(3)").text(AjaxObj.valicode);
+				}
+				else if(AjaxObj.status=="success"){
+					window.open("/index","_self");
+				}
+			}
+			else{
+				alert("服务器返回数据有误");
+			}
+		}
 	});
 	$("#reg_button").click(function(){
-		$("#reg_box").submit();
+		var email=$("#reg_box input:eq(0)").val();
+		var username=$("#reg_box input:eq(1)").val();
+		var password=$("#reg_box input:eq(2)").val();
+		var code=$("#reg_box input:eq(3)").val();
+		if(!(email)){
+			$("#reg_box p:eq(0)").text("值为空！");
+			flag2[0]=0;
+		}
+		if(!(username)){
+			$("#reg_box p:eq(1)").text("值为空！");
+			flag2[1]=0;
+		}
+		if(!(password)){
+			$("#reg_box p:eq(2)").text("值为空！");
+			flag2[2]=0;
+		}
+		if(code.length!=4){
+			$("#reg_box p:eq(4)").text("位数不够！");
+			flag2[3]=0;
+		}
+		else{
+			flag2[3]=1;
+		}
+		if(flag2[0]==1&&flag2[1]==1&&flag2[2]==1&&flag2[3]==1){
+			var xmlhttp=new XMLHttpRequest();
+			xmlhttp.open("POST","/regist",false);
+			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xmlhttp.send("email="+email+"&username="+username+"&password="+password+"&valicode="+code);
+			if(xmlhttp.responseText.charAt(0)=="{"){
+				var AjaxObj=eval("("+xmlhttp.responseText+")");
+				if(AjaxObj.email){
+					$("#reg_box p:eq(0)").text(AjaxObj.email);
+				}
+				else if(AjaxObj.username){
+					$("#reg_box p:eq(1)").text(AjaxObj.username);
+				}
+				else if(AjaxObj.password){
+					$("#reg_box p:eq(2)").text(AjaxObj.password);
+				}
+				else if(AjaxObj.valicode){
+					$("#reg_box p:eq(4)").text(AjaxObj.valicode);
+				}
+				else if(AjaxObj.status=="success"){
+					window.open("/index","_self");
+				}
+			}
+			else{
+				alert("服务器返回数据有误");
+			}
+		}
 	});
 	//登录注册输入框字符检测
-	var pattern1=/[^!-z]/,pattern2=/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/,pattern3=/^[\u4e00-\u9fa5A-Za-z0-9_]+$/;
+	var pattern1=/[^!-z]/,
+	pattern2=/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/,
+	pattern3=/^[\u4e00-\u9fa5A-Za-z0-9_]+$/,
+	pattern4=/[^a-zA-Z0-9]/;
 	var flag1=new Array(),flag2=new Array();
 	$("#log_box input:eq(0)").on({
 		"input":function(){
@@ -194,6 +302,52 @@ window.onload=function(){
 		else {
 			$("#log_box p:eq(1)").text("");
 			flag1[1]=1;
+		}
+	});
+	$("#log_box input:eq(2)").on({
+		"input":function(){
+			var str=$(this).val();
+			if(pattern4.test(str)){
+				$("#log_box p:eq(3)").text("字符有误");
+				flag1[1]=0;
+			}
+			else {
+				$("#log_box p:eq(3)").text("");
+				flag1[1]=1;
+			}
+		},
+		"blur":function(){
+			var str=$(this).val();
+			if(str.length!=4){
+				$("#log_box p:eq(3)").text("位数不够！");
+				flag1[2]=0;
+			}
+			else{
+				flag1[2]=1;
+			}
+		}
+	});
+	$("#reg_box input:eq(3)").on({
+		"input":function(){
+			var str=$(this).val();
+			if(pattern4.test(str)){
+				$("#reg_box p:eq(4)").text("字符有误");
+				flag1[1]=0;
+			}
+			else {
+				$("#reg_box p:eq(4)").text("");
+				flag1[1]=1;
+			}
+		},
+		"blur":function(){
+			var str=$(this).val();
+			if(str.length!=4){
+				$("#reg_box p:eq(4)").text("位数不够！");
+				flag1[2]=0;
+			}
+			else{
+				flag1[2]=1;
+			}
 		}
 	});
 	$("#reg_box input:eq(0)").on({
@@ -275,7 +429,7 @@ window.onload=function(){
 	$("#backwards").click(function(){
 		if(window.history.back()){}
 		else 
-			window.open("./index.html","_self");
+			window.open("./index","_self");
 	});
 	
 
@@ -292,49 +446,119 @@ window.onload=function(){
 			}
 		});
 	}
+	comment.onpaste=function(e){
+		var data=e.clipboardData;
+		document.execCommand("insertText",false,data.getData("text/plain"));
+		for(var i=0;i<$("#comment p").length;i++){
+				var s=$("#comment p:eq("+i+")").html();
+				if(s.charCodeAt(0)==13){
+					$("#comment p:eq("+i+")").html("<br>");
+				}
+				else if(s.charCodeAt(s.length-1)==13){
+					$("#comment p:eq("+i+")").html(s.slice(0,-1));
+				}
+			}
+		e.preventDefault();
+	}
+	comment.oninput=function(){
+		if(!($("#comment").text())){
+			$("#comment").html("<p><br></p>");
+			setTimeout(function(){
+				var r=document.createRange();
+				r.setStart(comment.childNodes[0].childNodes[0],0);
+				r.setEnd(comment.childNodes[0].childNodes[0],0);
+				window.getSelection().removeAllRanges();
+				window.getSelection().addRange(r);
+			},1);
+		}
+	}
 
 	//send message
+	/*
 	$("#send_message").click(function(){
-		var s=$("#comment").html();
-		alert(s);
-		$("#comment").html(s.toString());
+		alert($("#comment").html());
 	});
+	//*/
 
 
-		var page=document.getElementById("page").childNodes;
-		for(var i=0;i<Math.floor(page.length/2)-2;i++){
-			page[i*2+1].onclick=function(){
-				for(var j=0;j<Math.floor(page.length/2);j++){
-					page[j*2+1].style.backgroundColor="white";
+	//函数
+		function showPage(n,id){
+			//根据显示项数目生成Ajax式页码栏
+			var max=10;
+			var half=Math.floor((max-1)/2);
+			var pages=Math.ceil(n/8);
+			var gridrecord=0;
+			var grid,pagerecord=1;
+			if(pages<=max){
+				for(var i=1;i<=pages;i++){
+					$("#"+id).append("<div>"+i+"</div>");
 				}
-				this.style.backgroundColor="#c1c1c1";
+				$("#"+id).append("<div>></div>");
+				grid=pages;
+				$("#"+id+" div").click(function(){
+					var c=parseInt($(this).text());
+					if(!c){
+						if(pagerecord<pages)
+							c=pagerecord+1;
+						else
+							return;
+					}
+					$("#"+id+" div:eq("+gridrecord+")").css("background-color","white");
+					$("#"+id+" div:eq("+(c-1)+")").css("background-color","#c1c1c1");
+					gridrecord=c-1;
+					pagerecord=c;
+				});
 			}
+			else{
+				for(var i=1;i<=max-1;i++){
+					$("#"+id).append("<div>"+i+"</div>");
+				}
+				$("#"+id).append("<div>...</div><div>"+pages+"</div>")
+				$("#"+id).append("<div>></div>");
+				grid=max+1;
+				$("#"+id+" div").click(function(){
+					var c=parseInt($(this).text());
+					if(!c){
+						if(pagerecord<pages)
+							c=pagerecord+1;
+						else
+							return;
+					}
+					if(c-half>2&&c+half<pages-1){
+						$("#"+id+" div:eq("+1+")").text("...");
+						$("#"+id+" div:eq("+(max-1)+")").text("...");
+						for(var i=2;i<(max-1);i++){
+							$("#"+id+" div:eq("+i+")").text(i+c-(half+1));
+						}
+						$("#"+id+" div:eq("+gridrecord+")").css("background-color","white");
+						$("#"+id+" div:eq("+(half+1)+")").css("background-color","#c1c1c1");
+						gridrecord=(half+1);
+					}
+					else if(c-half<=2){
+						$("#"+id+" div:eq("+(max-1)+")").text("...");
+						for(var i=1;i<(max-1);i++){
+							$("#"+id+" div:eq("+i+")").text(i+1);
+						}
+						$("#"+id+" div:eq("+gridrecord+")").css("background-color","white");
+						$("#"+id+" div:eq("+(c-1)+")").css("background-color","#c1c1c1");
+						gridrecord=c-1;
+					}
+					else if(c+half>=pages-1){
+						$("#"+id+" div:eq("+1+")").text("...");
+						for(var i=2;i<max;i++){
+							$("#"+id+" div:eq("+i+")").text(i+pages-max);
+						}
+						$("#"+id+" div:eq("+gridrecord+")").css("background-color","white");
+						$("#"+id+" div:eq("+(max-(pages-c))+")").css("background-color","#c1c1c1");
+						gridrecord=max-(pages-c);
+					}
+					else{
+						alert("Error!")
+					}
+					pagerecord=c;
+				});
+			}
+			
 		}
-
-		//侧栏功能
-		var nav=document.getElementsByClassName("nav");
-		nav[0].onclick=function(){
-			if(window.history.back()){}
-			else 
-				window.open("./index.html","_self");
-		}
-		nav[1].onclick=function(){
-			window.scrollTo(0,0);
-		}
-		nav[1].onmouseover=function(){
-			this.style.backgroundColor="#cccccc";
-		}
-		nav[1].onmouseout=function(){
-			this.style.backgroundColor="#e78170";
-			if(document.body.scrollTop==0)
-				this.style.backgroundColor="#414141";
-		}
-		window.onscroll=function(){
-			if(document.body.scrollTop!=0)
-				nav[1].style.backgroundColor="#e78170";
-			else
-				nav[1].style.backgroundColor="#414141";
-		}
-		if(document.body.scrollTop!=0)
-				nav[1].style.backgroundColor="#e78170";
+	showPage(200,"page");
 }

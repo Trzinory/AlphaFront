@@ -288,7 +288,7 @@ window.onload=function(){
 
 	//正文区点击
 	//标题
-	$(".title .summary").click(function(){
+	$(".title,.summary").click(function(){
 		window.open("./article.html","_self");
 	});
 	//图片滚动事件
