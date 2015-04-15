@@ -462,11 +462,12 @@ window.onload=function(){
 	}
 	comment.oninput=function(){
 		if(!($("#comment").text())){
-			$("#comment").html("<p><br></p>");
+			$("#comment").html("<p> </p><p><br></p>");
 			setTimeout(function(){
+				$("body").focus();
 				var r=document.createRange();
-				r.setStart(comment.childNodes[0].childNodes[0],0);
-				r.setEnd(comment.childNodes[0].childNodes[0],0);
+				r.setStart(comment.childNodes[1],0);
+				r.setEnd(comment.childNodes[1],0);
 				window.getSelection().removeAllRanges();
 				window.getSelection().addRange(r);
 			},1);
@@ -474,7 +475,7 @@ window.onload=function(){
 	}
 
 	//send message
-	/*
+	//*
 	$("#send_message").click(function(){
 		alert($("#comment").html());
 	});

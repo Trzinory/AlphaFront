@@ -323,20 +323,22 @@ window.onload=function(){
 		writetext.oninput=function(){
 			if(!($("#write_text").text())){
 				//chrome,safari
-				$("#write_text").html("<p contenteditable='false'> </p><p><br></p>");
+				$("#write_text").html("<p> </p><p><br></p>");
 				setTimeout(function(){
 					var r=document.createRange();
-					r.setStart(writetext.childNodes[1].childNodes[0],0);
-					r.setEnd(writetext.childNodes[1].childNodes[0],0);
+					r.setStart(writetext.childNodes[1],0);
+					r.setEnd(writetext.childNodes[1],0);
 					window.getSelection().removeAllRanges();
 					window.getSelection().addRange(r);
 				},1);
 			}
+			/*
 			else if($("#write_text").text()==" "){
 				//ff
 				$("#write_text").html("<p contenteditable='false'> </p><p><br></p>");
 				$("#write_title").focus();
 			}
+			//*/
 			var h=document.body.scrollTop;
 			this.style.height=0+"px";
 			if(this.scrollHeight>300){
