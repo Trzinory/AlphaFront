@@ -85,20 +85,18 @@ window.onload=function(){
 		var form=document.getElementById("form");
 		$("#file").change(function(){
 			if(/image/.test(file.files[0].type)){
+				var img=document.createElement("img");
 				if(window.webkitURL){
-					var img=document.createElement("img");
 					img.src=window.webkitURL.createObjectURL(file.files[0]);
 					range.insertNode(img);
 				}
 				else if(window.URL){
-					var img=document.createElement("img");
 					img.src=window.URL.createObjectURL(file.files[0]);
 					range.insertNode(img);
 				}
 				else if(window.FileReader){
 					var reader=new FileReader();
 					reader.onload=function(){
-						var img=document.createElement("img");
 						img.src=this.result;
         				range.insertNode(img);
 					}
@@ -142,7 +140,16 @@ window.onload=function(){
 		//设置文本样式
 		//*
 		$("#article_pub").click(function(){
-			alert($("#write_text").html());
+			var data=$("#write_text").html();
+			var textform=document.createElement("form");
+			textform.method="post";
+			textform.action="./index.html";
+			var textinput=document.createElement("input");
+			textinput.type="text";
+			textinput.value=data;
+			textform.appendChild(textinput);
+			alert(textform.firstChild.value)
+			textform.submit();
 		});
 		//*/
 		$("#style>img").click(function(){

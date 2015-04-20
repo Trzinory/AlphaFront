@@ -181,10 +181,12 @@ ul
 	{
 	float:right;
 	margin-left:20px;
-	width:300px;
+	padding-left:38px;
+	width:262px;
 	height:85px;
 	overflow-x:hidden;
 	white-space: nowrap;
+	-webkit-perspective:500;
 	}
 .pic_box img
 	{
@@ -193,6 +195,38 @@ ul
 	width:65px;
 	height:74px;
 	cursor:pointer;
+	}
+	@-webkit-keyframes rotate {
+		from {-webkit-transform:rotateY(0deg)}
+		to {-webkit-transform:rotateY(60deg)}
+	}
+	@keyframes rotate {
+		from {-webkit-transform:rotateY(0deg)}
+		to {-webkit-transform:rotateY(60deg)}
+	}
+	@-webkit-keyframes rotate2 {
+		from {-webkit-transform:rotateY(60deg)}
+		to {-webkit-transform:rotateY(0deg)}
+	}
+	@keyframes rotate2 {
+		from {-webkit-transform:rotateY(60deg)}
+		to {-webkit-transform:rotateY(0deg)}
+	}
+	@-webkit-keyframes rotate3 {
+		from {-webkit-transform:rotateY(-60deg)}
+		to {-webkit-transform:rotateY(0deg)}
+	}
+	@keyframes rotate3 {
+		from {-webkit-transform:rotateY(-60deg)}
+		to {-webkit-transform:rotateY(0deg)}
+	}
+	@-webkit-keyframes rotate4 {
+		from {-webkit-transform:rotateY(0deg)}
+		to {-webkit-transform:rotateY(-60deg)}
+	}
+	@keyframes rotate4 {
+		from {-webkit-transform:rotateY(0deg)}
+		to {-webkit-transform:rotateY(-60deg)}
 	}
 .summary
 	{
