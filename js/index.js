@@ -11,6 +11,7 @@ window.onload=function(){
 	//0表示视窗在最顶，1表示不在最顶
 	$(window).scroll(function(){
 		var top=$(window).scrollTop();
+		$("#search").val(top);
 		var flag;
 		if(top>0){
 			flag=1;
@@ -18,23 +19,28 @@ window.onload=function(){
 		else {
 			flag=0;
 		}
-		//从顶滑下
-		if(flag==1&&scrollFlag!=flag){
-			$("#intro_top").hide();
-			$("#nav_top").css("background-color","rgba(102,153,255,0.8)");
-			$("#search").css("margin-top","15px");
-			$("#lr").css("margin-top","17px");
-			$("#user").css("margin-top","0px");
-			scrollFlag=1;
+		if(scrollFlag==flag){
+			return;
 		}
-		//从下滑到顶
-		else if(flag==0&&scrollFlag!=flag){
-			$("#intro_top").show();
-			$("#nav_top").css("background-color","rgba(102,153,255,1)");
-			$("#search").css("margin-top","25px");
-			$("#lr").css("margin-top","27px");
-			$("#user").css("margin-top","10px");
-			scrollFlag=0;
+		else{
+			//从顶滑下
+			if(flag==1){
+				$("#intro_top").hide();
+				$("#nav_top").css("background-color","rgba(102,153,255,0.8)");
+				$("#search").css("margin-top","15px");
+				$("#lr").css("margin-top","17px");
+				$("#user").css("margin-top","0px");
+				scrollFlag=1;
+			}
+			//从下滑到顶
+			else if(flag==0){
+				$("#intro_top").show();
+				$("#nav_top").css("background-color","rgba(102,153,255,1)");
+				$("#search").css("margin-top","25px");
+				$("#lr").css("margin-top","27px");
+				$("#user").css("margin-top","10px");
+				scrollFlag=0;
+			}
 		}
 	});
 
@@ -323,7 +329,7 @@ window.onload=function(){
 			pb.onmousewheel=function(e){e.preventDefault()};
 			setTimeout(function(){
 				pb.onmousewheel=picSlide;
-			},200);
+			},100);
 			var len=$("img",this).length;
 			var t=0,img,l,count=100;
 			for(var i=0;i<len;i++){
@@ -410,4 +416,6 @@ window.onload=function(){
     for(var i=0;i<picbox.length;i++){
 		picbox[i].onmousewheel=picSlide;
 	}
+
+	//滚动到一定高度发送ajax请求
 };
