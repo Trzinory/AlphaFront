@@ -3,32 +3,133 @@
 	ul{list-style-type:none;}
 	input:focus{outline:none;}
 	.clear{clear:both;}
-	#settings{margin:0 auto;margin-top:110px;padding:5px 0;width:900px;font-size:24px;border-bottom:2px solid #a1a1a1;}
-	#settings span{padding:5px 40px 7px 40px;background-color:#a1a1a1;color:white;}
-	#fill{height:1px;}
+	#settings{
+		margin:0 auto;
+		margin-top:110px;
+		padding:5px 0;
+		width:900px;
+		font-size:24px;
+		border-bottom:2px solid #a1a1a1;
+	}
+	#settings span{
+		padding:5px 40px 7px 40px;
+		background-color:#a1a1a1;
+		color:white;
+	}
+	#fill{
+		height:1px;
+	}
 
-	#set_nav{width:800px;margin:0 auto;margin-top:20px;display:none;}
-	#set_nav ul{list-style-type:none;padding:0;border-bottom:1px solid;}
-	#set_nav li{float:left;width:80px;padding:10px;margin-left:5px;text-align:center;border:1px solid;border-bottom:none;cursor:default;}
-	#set_nav li{position:relative;top:1px;border-top-left-radius:7px;border-top-right-radius:7px;}
-	#set_nav li:first-child{background-color:white;}
-	#set_nav li:hover{background-color:#e1e1e1;}
+	#set_nav{
+		width:800px;
+		margin:0 auto;
+		margin-top:20px;
+		display:none;
+	}
+	#set_nav ul{
+		list-style-type:none;
+		padding:0;
+		border-bottom:1px solid;
+	}
+	#set_nav li{
+		float:left;
+		width:80px;
+		padding:10px;
+		margin-left:5px;
+		text-align:center;
+		border:1px solid;
+		border-bottom:none;
+		cursor:default;
+	}
+	#set_nav li{
+		position:relative;
+		top:1px;
+		border-top-left-radius:7px;
+		border-top-right-radius:7px;
+	}
+	#set_nav li:first-child{
+		background-color:white;
+	}
+	#set_nav li:hover{
+		background-color:#e1e1e1;
+	}
 
-	#box{width:800px;margin:0 auto;margin-top:0px;}
-	#box img{width:80px;height:80px;cursor:pointer;border:1px solid;margin:5px 0 0px 0px;}
-	table{border-collapse:collapse;width:800px;margin-top:20px;}
-	.tr_option{border-bottom:2px dashed #e1e1e1;}
-	tr{height:70px;}
-	.tr_option:hover{background-color:rgba(221,255,251,0.2);}
-	td{font-size:18px;}
-	.tr_option input{border:1px solid;width:250px;height:22px;text-indent:10px;font-size:16px;}
-	.left{width:45%;text-align:center;text-indent:100px;}
-	.right{width:55%;}
-	.middle{text-align:center;}
-	.tran{border-top:solid 10px #a1a1a1;left:570px;top:20px;border-left:solid 6px transparent;border-right:solid 6px transparent;position:relative;}
-	.tran2{border-top:solid 10px #a1a1a1;left:570px;top:-10px;border-left:solid 6px transparent;border-right:solid 6px transparent;position:relative;}
-	#sbmt input{width:100px;padding:3px 10px;font-size:20px;color:white;background-color:#049ff1;border-radius:30px;border:1px solid #049ff1;}
-	#uname_input{display:none;}
+	#box{
+		width:800px;
+		margin:0 auto;
+		margin-top:0px;
+	}
+	#box img{
+		width:80px;
+		height:80px;
+		cursor:pointer;
+		border:1px solid;
+		margin:5px 0 0px 0px;
+	}
+	table{
+		border-collapse:collapse;
+		width:800px;
+		margin-top:20px;
+	}
+	.tr_option{
+		border-bottom:2px dashed #e1e1e1;
+	}
+	tr{
+		height:70px;
+	}
+	.tr_option:hover{
+		background-color:rgba(221,255,251,0.2);
+	}
+	td{
+		font-size:18px;
+	}
+	.tr_option input{
+		border:1px solid;width:250px;
+		height:22px;
+		text-indent:10px;
+		font-size:16px;
+	}
+	.left{
+		width:45%;
+		text-align:center;
+		text-indent:100px;
+	}
+	.right{
+		width:55%;
+	}
+	.middle{
+		text-align:center;
+	}
+	.tran{
+		border-top:solid 10px #a1a1a1;
+		left:570px;
+		top:20px;
+		border-left:solid 6px transparent;
+		border-right:solid 6px transparent;
+		position:relative;
+	}
+	.tran2{
+		border-top:solid 10px #a1a1a1;
+		left:570px;
+		top:-10px;
+		border-left:solid 6px transparent;
+		border-right:solid 6px transparent;
+		position:relative;
+	}
+	#send{
+		width:100px;
+		padding:3px 0;
+		font-size:20px;
+		color:white;
+		background-color:#049ff1;
+		border-radius:30px;
+		border:1px solid #049ff1;
+		text-align:center;
+		cursor:pointer;
+	}
+	#uname_input{
+		display:none;
+	}
 	#uname_edit
 		{
 		border:1px solid;
@@ -39,8 +140,13 @@
 		border:1px solid #049ff1;
 		color:white;
 		font-size:14px;
-		cursor:default;
+		cursor:pointer;
 		}
+	.hint{
+		color:red;
+		font-size:14px;
+		margin-left:10px;
+	}
 
 #nav_top
 	{

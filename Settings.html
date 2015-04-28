@@ -21,15 +21,19 @@
 			<div id="user_face"><img src=""></div>
 			<div id="list_top">
 				<ul>
-					<li>
-						<img src="./img/settings.png">
+					<li id="list_writting">
+						<img src="./img/pen.png">
 						<p>写文章</p>
 					</li>
-					<li>
+					<li id="list_edit">
 						<img src="./img/pen.png">
+						<p>编辑</p>
+					</li>
+					<li id="list_setting">
+						<img src="./img/settings.png">
 						<p>设置</p>
 					</li>
-					<li>
+					<li id="list_logout">
 						<img src="./img/paperplane.png">
 						<p>注销</p>
 						<div class="clear"></div>
@@ -57,7 +61,7 @@
 		<div class="clear"></div>
 	</div>
     <div id="box">
-    	<form>
+    	<form id="settings_form">
     		<table>
     			<!--
     			<tr>
@@ -69,30 +73,31 @@
     				<td class="left">E-mail</td>
     				<td class="right">123@123.123</td>
     			</tr>
-    			<tr class="tr_option">
+    			<tr class="tr_option" id="uname_row">
     				<td class="left">用户名</td>
     				<td class="right">
     					<!--<span class="tran"></span>-->
     					<span id="user_name">Trzinory</span>
     					<span id="uname_edit">编辑</span>
-    					<input id="uname_input" type="text">
+    					<input id="uname_input" type="text" name="username" maxlength="8">
+    					<span class="hint"></span>
     				</td>
     			</tr>
     			<tr class="tr_option">
     				<td class="left">原密码</td>
-    				<td class="right"><!--<span class="tran"></span>--><input type="password"></td>
+    				<td class="right"><!--<span class="tran"></span>--><input class="set_password" type="password" maxlength="16" name="opassword"><span class="hint"></span></td>
     			</tr>
     			<tr class="tr_option">
     				<td class="left">新密码</td>
-    				<td class="right"><!--<span class="tran"></span>--><input type="password"></td>
+    				<td class="right"><!--<span class="tran"></span>--><input class="set_password" type="password" maxlength="16" name="newpassword1"><span class="hint"></span></td>
     			</tr>
     			<tr class="tr_option">
     				<td class="left">确认密码</td>
-    				<td class="right"><!--<span class="tran"></span>--><input type="password"></td>
+    				<td class="right"><!--<span class="tran"></span>--><input class="set_password" type="password" maxlength="16" name="newpassword2"><span class="hint"></span></td>
     			</tr>
-    			<tr id="sbmt">
+    			<tr id="set_confirm">
     				<td class="left"></td>
-    				<td class="right"><input type="submit" action="/saveSettings" method="POST" value="确定"></td>
+    				<td class="right"><div id="send">确定</div></td>
     			</tr>
     		</table>
     	</form>
